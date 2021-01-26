@@ -1,0 +1,3 @@
+include ':rtlviewpager'
+include ':app'
+rootProject.name = "RTl ViewPager"
