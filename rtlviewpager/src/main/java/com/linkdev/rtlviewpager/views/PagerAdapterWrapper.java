@@ -24,6 +24,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * PagerAdapter decorator.
  */
@@ -62,12 +64,13 @@ class PagerAdapterWrapper extends PagerAdapter {
     }
 
     @Override
-    public int getItemPosition(Object object) {
+    public int getItemPosition(@NotNull Object object) {
         return adapter.getItemPosition(object);
     }
 
+    @NotNull
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(@NotNull ViewGroup container, int position) {
         return adapter.instantiateItem(container, position);
     }
 
@@ -77,7 +80,7 @@ class PagerAdapterWrapper extends PagerAdapter {
     }
 
     @Override
-    public void setPrimaryItem(ViewGroup container, int position, Object object) {
+    public void setPrimaryItem(@NotNull ViewGroup container, int position, @NotNull Object object) {
         adapter.setPrimaryItem(container, position, object);
     }
 
@@ -87,12 +90,12 @@ class PagerAdapterWrapper extends PagerAdapter {
     }
 
     @Override
-    public void registerDataSetObserver(DataSetObserver observer) {
+    public void registerDataSetObserver(@NotNull DataSetObserver observer) {
         adapter.registerDataSetObserver(observer);
     }
 
     @Override
-    public void unregisterDataSetObserver(DataSetObserver observer) {
+    public void unregisterDataSetObserver(@NotNull DataSetObserver observer) {
         adapter.unregisterDataSetObserver(observer);
     }
 
@@ -107,12 +110,12 @@ class PagerAdapterWrapper extends PagerAdapter {
     }
 
     @Override
-    public void startUpdate(ViewGroup container) {
+    public void startUpdate(@NotNull ViewGroup container) {
         adapter.startUpdate(container);
     }
 
     @Override
-    public void finishUpdate(ViewGroup container) {
+    public void finishUpdate(@NotNull ViewGroup container) {
         adapter.finishUpdate(container);
     }
 }
