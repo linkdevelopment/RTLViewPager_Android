@@ -3,6 +3,7 @@ package com.linkdev.rtlviewpager.di
 import android.content.Context
 import androidx.viewbinding.ViewBinding
 import com.linkdev.rtlviewpager.ui.base.BaseActivity
+import com.linkdev.rtlviewpager.ui.tabs.ViewPagerComponent
 
 import dagger.BindsInstance
 import dagger.Component
@@ -23,5 +24,6 @@ interface AppComponent {
 
 
     fun inject(baseActivity: BaseActivity<@JvmSuppressWildcards ViewBinding>?)
+    fun viewPagerComponent(): ViewPagerComponent.Factory
 
 }

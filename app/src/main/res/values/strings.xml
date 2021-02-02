@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RTl ViewPager</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name" translatable="false">RTl ViewPager</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
 </resources>
