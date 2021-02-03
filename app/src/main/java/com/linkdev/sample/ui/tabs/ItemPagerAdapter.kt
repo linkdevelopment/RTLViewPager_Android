@@ -26,8 +26,7 @@ internal class ItemPagerAdapter(
     var fragments: ArrayList<Fragment>,
     var tabItems: ArrayList<TabItemData>
 ) : FragmentPagerAdapter(
-    fragmentManager,
-    FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+    fragmentManager
 ) {
 
     override fun getItem(position: Int): Fragment {
