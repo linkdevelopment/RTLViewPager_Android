@@ -2,4 +2,10 @@
 <resources>
     <string name="english">الانجليزيه</string>
     <string name="arabic">العربيه</string>
+    <string name="tab_one">الاولى</string>
+    <string name="tab_two">الثانيه</string>
+    <string name="tab_three">الثلاثه</string>
+    <string name="tab1_description">الوصف الاولى</string>
+    <string name="tab2_description"> الوصف الثانى</string>
+    <string name="tab3_description">الوصف الثلاث</string>
 </resources>

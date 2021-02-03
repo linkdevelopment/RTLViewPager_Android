@@ -1,13 +1,13 @@
-package com.linkdev.rtlviewpager.ui
+package com.linkdev.sample.ui
 
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.linkdev.rtlviewpager.databinding.ActivityMainBinding
-import com.linkdev.rtlviewpager.ui.base.BaseActivity
-import com.linkdev.rtlviewpager.ui.tabs.FragmentViewPager
+import com.linkdev.sample.databinding.ActivityMainBinding
+import com.linkdev.sample.ui.base.BaseActivity
+import com.linkdev.sample.ui.tabs.FragmentViewPager
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     companion object {

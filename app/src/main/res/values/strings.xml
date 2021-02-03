@@ -2,4 +2,10 @@
     <string name="app_name" translatable="false">RTl ViewPager</string>
     <string name="english">English</string>
     <string name="arabic">Arabic</string>
+    <string name="tab_one">One</string>
+    <string name="tab_two">Two</string>
+    <string name="tab_three">three</string>
+    <string name="tab1_description">Description one</string>
+    <string name="tab2_description">Description Two</string>
+    <string name="tab3_description">Description Three</string>
 </resources>

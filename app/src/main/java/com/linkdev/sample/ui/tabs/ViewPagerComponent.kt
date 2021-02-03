@@ -1,4 +1,4 @@
-package com.linkdev.rtlviewpager.ui.tabs
+package com.linkdev.sample.ui.tabs
 
 import dagger.Subcomponent
 

@@ -1,10 +1,10 @@
-package com.linkdev.rtlviewpager.data.shared_preference
+package com.linkdev.sample.data.shared_preference
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import com.linkdev.rtlviewpager.utils.Constants
-import com.linkdev.rtlviewpager.utils.Constants.AppPreference.APP_LOCALE_KEY
+import com.linkdev.sample.utils.Constants
+import com.linkdev.sample.utils.Constants.AppPreference.APP_LOCALE_KEY
 
 
 class PreferenceDataSource(context: Context) : IPreferenceDataSource {

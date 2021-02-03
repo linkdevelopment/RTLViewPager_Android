@@ -1,15 +1,14 @@
-package com.linkdev.rtlviewpager.ui.base
+package com.linkdev.sample.ui.base
 
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.linkdev.rtlviewpager.ui.RTLViewPagerSampleApplication
-import com.linkdev.rtlviewpager.utils.Constants
-import com.linkdev.rtlviewpager.utils.LocaleContextWrapper
+import com.linkdev.sample.ui.RTLViewPagerSampleApplication
+import com.linkdev.sample.utils.Constants
+import com.linkdev.sample.utils.LocaleContextWrapper
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -52,18 +51,6 @@ abstract class BaseActivity<out VB : ViewBinding> : AppCompatActivity() {
         fragmentTransaction.replace(containerId, fragment, tag)
             .commit()
     }
-
-    protected fun addFragment(
-        containerId: Int, fragment: Fragment, tag: String,
-        shouldAddToBackStack: Boolean = false, backStackTag: String? = null
-    ) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        if (shouldAddToBackStack)
-            fragmentTransaction.addToBackStack(backStackTag)
-        fragmentTransaction.add(containerId, fragment, tag)
-            .commit()
-    }
-
 
     // Localization
     override fun attachBaseContext(mNewBase: Context) {

@@ -1,9 +1,9 @@
-package com.linkdev.rtlviewpager.di
+package com.linkdev.sample.di
 
 import android.content.Context
 import androidx.viewbinding.ViewBinding
-import com.linkdev.rtlviewpager.ui.base.BaseActivity
-import com.linkdev.rtlviewpager.ui.tabs.ViewPagerComponent
+import com.linkdev.sample.ui.base.BaseActivity
+import com.linkdev.sample.ui.tabs.ViewPagerComponent
 
 import dagger.BindsInstance
 import dagger.Component

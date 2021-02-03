@@ -1,4 +1,4 @@
-package com.linkdev.rtlviewpager.ui.base
+package com.linkdev.sample.ui.base
 
 import android.content.Context
 import android.os.Bundle

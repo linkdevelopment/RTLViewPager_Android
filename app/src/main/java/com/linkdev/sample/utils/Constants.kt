@@ -1,4 +1,4 @@
-package com.linkdev.rtlviewpager.utils
+package com.linkdev.sample.utils
 
 object Constants {
 
@@ -6,8 +6,6 @@ object Constants {
         const val SHARED_PREFERENCE_NAME = "EPM_SHARED_PREFERENCE"
         const val APP_LOCALE_KEY = "APP_LOCALE_KEY"
     }
-
-
 
 
     object Languages {
@@ -20,6 +18,9 @@ object Constants {
         const val LANGUAGE: String = "LANGUAGE"
     }
 
+    object Extras {
+        const val TAB_ITEM = "TAB_ITEM"
+    }
 
 
 }

@@ -1,4 +1,4 @@
-package com.linkdev.rtlviewpager.data.shared_preference
+package com.linkdev.sample.data.shared_preference
 
 
 interface IPreferenceDataSource {

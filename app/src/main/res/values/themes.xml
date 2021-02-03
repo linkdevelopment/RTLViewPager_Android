@@ -6,5 +6,12 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <!-- Customize your theme here. -->
+
+    </style>
+    <!-- tab layout style -->
+    <style name="AppTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/teal_200</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+        <item name="tabSelectedTextColor">@color/teal_200</item>
     </style>
 </resources>

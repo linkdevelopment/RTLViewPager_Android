@@ -1,11 +1,11 @@
-package com.linkdev.rtlviewpager.di
+package com.linkdev.sample.di
 
 import android.app.Application
 import android.content.Context
-import com.linkdev.rtlviewpager.data.shared_preference.IPreferenceDataSource
-import com.linkdev.rtlviewpager.data.shared_preference.PreferenceDataSource
-import com.linkdev.rtlviewpager.ui.RTLViewPagerSampleApplication
-import com.linkdev.rtlviewpager.utils.Constants
+import com.linkdev.sample.data.shared_preference.IPreferenceDataSource
+import com.linkdev.sample.data.shared_preference.PreferenceDataSource
+import com.linkdev.sample.ui.RTLViewPagerSampleApplication
+import com.linkdev.sample.utils.Constants
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named

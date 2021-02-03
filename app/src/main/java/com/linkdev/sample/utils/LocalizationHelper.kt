@@ -1,8 +1,8 @@
-package com.linkdev.rtlviewpager.utils
+package com.linkdev.sample.utils
 
 import android.content.Context
 import android.text.TextUtils
-import com.linkdev.rtlviewpager.data.shared_preference.IPreferenceDataSource
+import com.linkdev.sample.data.shared_preference.IPreferenceDataSource
 import java.util.*
 
 object LocalizationHelper {

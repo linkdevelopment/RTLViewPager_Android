@@ -1,4 +1,4 @@
-package com.linkdev.rtlviewpager.utils
+package com.linkdev.sample.utils
 
 import android.content.Context
 import android.content.ContextWrapper

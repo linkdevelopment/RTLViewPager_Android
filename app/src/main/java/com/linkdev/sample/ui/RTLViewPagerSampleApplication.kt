@@ -1,8 +1,8 @@
-package com.linkdev.rtlviewpager.ui
+package com.linkdev.sample.ui
 
 import android.app.Application
-import com.linkdev.rtlviewpager.di.AppComponent
-import com.linkdev.rtlviewpager.di.DaggerAppComponent
+import com.linkdev.sample.di.AppComponent
+import com.linkdev.sample.di.DaggerAppComponent
 
 class RTLViewPagerSampleApplication : Application() {
 
