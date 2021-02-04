@@ -19,12 +19,25 @@ package com.linkdev.sample.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.linkdev.sample.databinding.ActivityMainBinding
-import com.linkdev.sample.ui.base.BaseActivity
 import com.linkdev.sample.ui.tabs.FragmentViewPager
+import com.linkdev.sample.utils.Constants
+import com.linkdev.sample.utils.Constants.ExampleType.FRAGMENT_TYPE
+import com.linkdev.sample.utils.Constants.ExampleType.VIEW_TYPE
+import com.linkdev.sample.utils.LocaleContextWrapper
+import javax.inject.Inject
+import javax.inject.Named
 
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class MainActivity : AppCompatActivity() {
+
+    private var binding: ActivityMainBinding? = null
+
+    @Inject
+    @Named(Constants.NamedAnnotations.LANGUAGE)
+    lateinit var mAppLanguage: String
+
     companion object {
         fun restartActivity(context: Context) {
             val intent = Intent(context, MainActivity::class.java)
@@ -35,26 +48,51 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
-    override val viewBindingInflater: (LayoutInflater) -> ActivityMainBinding
-        get() = ActivityMainBinding::inflate
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (savedInstanceState == null)
-            replaceFragment(
-                binding.fragmentContainer.id,
-                FragmentViewPager.newInstance(),
-                FragmentViewPager.Tag
-            )
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(requireNotNull(binding?.root))
+        setListeners()
     }
 
 
-    override fun initializeViews() {
+    // Localization
+    override fun attachBaseContext(mNewBase: Context) {
+        var newBase = mNewBase
+        (newBase.applicationContext as RTLViewPagerSampleApplication).appComponent.inject(this)
+
+        newBase = LocaleContextWrapper.wrap(newBase, mAppLanguage)
+
+        super.attachBaseContext(newBase)
+    }
+
+    private fun setListeners() {
+        binding?.btnFragment?.setOnClickListener { onButtonClicked(FRAGMENT_TYPE) }
+        binding?.btnView?.setOnClickListener { onButtonClicked(VIEW_TYPE) }
 
     }
 
-    override fun setListeners() {
-
+    private fun onButtonClicked(buttonType: Int) {
+        replaceFragment(
+            binding?.fragmentContainer?.id!!,
+            FragmentViewPager.newInstance(buttonType),
+            FragmentViewPager.Tag
+        )
     }
 
+    private fun replaceFragment(
+        containerId: Int, fragment: Fragment, tag: String,
+        shouldAddToBackStack: Boolean = false, backStackTag: String? = null
+    ) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        if (shouldAddToBackStack)
+            fragmentTransaction.addToBackStack(backStackTag)
+        fragmentTransaction.add(containerId, fragment, tag)
+            .commit()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
+    }
 }

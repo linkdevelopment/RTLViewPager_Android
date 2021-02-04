@@ -36,6 +36,13 @@ object Constants {
 
     object Extras {
         const val TAB_ITEM = "TAB_ITEM"
+        const val Example_Type = "Example_Type"
+
+    }
+
+    object ExampleType {
+        const val FRAGMENT_TYPE = 1
+        const val VIEW_TYPE = 2
     }
 
 

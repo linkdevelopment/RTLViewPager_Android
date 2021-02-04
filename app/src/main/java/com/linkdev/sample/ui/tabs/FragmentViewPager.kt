@@ -25,26 +25,37 @@ import com.linkdev.sample.data.shared_preference.IPreferenceDataSource
 import com.linkdev.sample.databinding.FragmentViewPagerBinding
 import com.linkdev.sample.ui.MainActivity
 import com.linkdev.sample.ui.RTLViewPagerSampleApplication
-import com.linkdev.sample.ui.base.BaseFragment
 import com.linkdev.sample.ui.tabs.tabs_item.FragmentTabItem
 import com.linkdev.sample.utils.Constants
+import com.linkdev.sample.utils.Constants.Extras.Example_Type
 import javax.inject.Inject
 
 
-class FragmentViewPager : BaseFragment<FragmentViewPagerBinding>() {
+class FragmentViewPager : Fragment() {
 
     @Inject
     lateinit var iPreferenceDataSource: IPreferenceDataSource
+    private var binding: FragmentViewPagerBinding? = null
 
     companion object {
         const val Tag = "FragmentViewPager"
 
         @JvmStatic
-        fun newInstance() = FragmentViewPager()
+        fun newInstance(exampleType: Int) = FragmentViewPager().apply {
+            arguments = Bundle().apply {
+                putInt(Example_Type, exampleType)
+            }
+        }
     }
 
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentViewPagerBinding
-        get() = FragmentViewPagerBinding::inflate
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentViewPagerBinding.inflate(layoutInflater)
+        return binding?.root
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,16 +65,15 @@ class FragmentViewPager : BaseFragment<FragmentViewPagerBinding>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         injectDependency()
+        initViews()
     }
 
-    override fun initViews() {
-        binding.viewPager.adapter =
+    fun initViews() {
+        binding?.viewPager?.adapter =
             ItemPagerAdapter(childFragmentManager, getFragmentList(), getTabItemData())
-        binding.tabLayout.setupWithViewPager(binding.viewPager)
+        binding?.tabLayout?.setupWithViewPager(binding?.viewPager)
     }
 
-    override fun setListeners() {
-    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -79,13 +89,13 @@ class FragmentViewPager : BaseFragment<FragmentViewPagerBinding>() {
     }
 
     private fun injectDependency() {
-        (mContext.applicationContext as RTLViewPagerSampleApplication).appComponent.viewPagerComponent()
+        (context?.applicationContext as RTLViewPagerSampleApplication).appComponent.viewPagerComponent()
             .create().inject(this)
     }
 
     private fun saveLanguage(language: String) {
         iPreferenceDataSource.setLanguage(language)
-        MainActivity.restartActivity(mContext)
+        MainActivity.restartActivity(context!!)
     }
 
 
@@ -113,5 +123,10 @@ class FragmentViewPager : BaseFragment<FragmentViewPagerBinding>() {
             )
         )
         return tabItems
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }

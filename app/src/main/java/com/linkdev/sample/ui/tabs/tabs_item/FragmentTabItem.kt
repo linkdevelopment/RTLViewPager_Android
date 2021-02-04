@@ -18,14 +18,17 @@ package com.linkdev.sample.ui.tabs.tabs_item
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.linkdev.sample.data.TabItemData
 import com.linkdev.sample.databinding.FragmentTabItemBinding
-import com.linkdev.sample.ui.base.BaseFragment
 import com.linkdev.sample.utils.Constants.Extras.TAB_ITEM
 
 
-class FragmentTabItem : BaseFragment<FragmentTabItemBinding>() {
+class FragmentTabItem : Fragment() {
+
+    private var binding: FragmentTabItemBinding? = null
 
     companion object {
 
@@ -38,16 +41,13 @@ class FragmentTabItem : BaseFragment<FragmentTabItemBinding>() {
             }
     }
 
-
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentTabItemBinding
-        get() = FragmentTabItemBinding::inflate
-
-    override fun initViews() {
-
-    }
-
-    override fun setListeners() {
-
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentTabItemBinding.inflate(layoutInflater)
+        return binding?.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -58,8 +58,11 @@ class FragmentTabItem : BaseFragment<FragmentTabItemBinding>() {
     }
 
     private fun bindDataToViews(tabItemData: TabItemData?) {
-        binding.txtDescription.text = tabItemData?.itemDescription
+        binding?.txtDescription?.text = tabItemData?.itemDescription
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 }

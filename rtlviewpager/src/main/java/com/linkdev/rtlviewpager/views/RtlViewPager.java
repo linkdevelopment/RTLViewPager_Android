@@ -188,8 +188,12 @@ public class RtlViewPager extends ViewPager {
         super.removeOnPageChangeListener(listener);
     }
 
+    @Override
+    public void clearOnPageChangeListeners() {
+        super.clearOnPageChangeListeners();
+    }
 
-    private class ReverseAdapter extends PagerAdapterWrapper {
+    private class ReverseAdapter extends PagerAdapterDelegator {
 
         private int lastCount;
 

@@ -29,4 +29,9 @@ limitations under the License.
         <item name="tabSelectedTextColor">@color/white</item>
         <item name="tabSelectedTextColor">@color/teal_200</item>
     </style>
+
+    <style name="button_style" parent="Widget.AppCompat.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/teal_200</item>
+    </style>
 </resources>

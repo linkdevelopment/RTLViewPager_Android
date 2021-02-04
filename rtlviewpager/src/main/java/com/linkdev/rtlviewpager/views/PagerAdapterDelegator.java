@@ -27,14 +27,14 @@ import androidx.viewpager.widget.PagerAdapter;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * PagerAdapter decorator.
+ * PagerAdapter Delegator.
  */
-class PagerAdapterWrapper extends PagerAdapter {
+class PagerAdapterDelegator extends PagerAdapter {
 
     @NonNull
     private final PagerAdapter adapter;
 
-    protected PagerAdapterWrapper(@NonNull PagerAdapter adapter) {
+    protected PagerAdapterDelegator(@NonNull PagerAdapter adapter) {
         this.adapter = adapter;
     }
 
