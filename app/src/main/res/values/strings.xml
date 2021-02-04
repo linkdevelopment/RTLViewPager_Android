@@ -15,8 +15,8 @@ limitations under the License.
 -->
 <resources>
     <string name="app_name" translatable="false">RTl ViewPager</string>
-    <string name="english">English</string>
-    <string name="arabic">Arabic</string>
+    <string name="english" translatable="false">English</string>
+    <string name="arabic" translatable="false">العربيه</string>
     <string name="tab_one">One</string>
     <string name="tab_two">Two</string>
     <string name="tab_three">three</string>
