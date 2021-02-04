@@ -66,8 +66,8 @@ public class RtlViewPager extends ViewPager {
     }
 
     /**
-     * in case of the RTLViewPager will be detached from window due to orientation changed we need to override the onConfigurationChanged method in
-     * the application class to provide the RTl Language 
+     * in case of the RTLViewPager will be detached from window due to orientation changed we need to override the {@link #onConfigurationChanged } method in
+     * the application class to provide the RTl Language
      */
     @Override
     protected void onDetachedFromWindow() {
