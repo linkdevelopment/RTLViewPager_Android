@@ -23,6 +23,9 @@ limitations under the License.
     <string name="tab1_description">Description one</string>
     <string name="tab2_description">Description Two</string>
     <string name="tab3_description">Description Three</string>
+    <string name="orange"> Orange</string>
+    <string name="red"> Red</string>
+    <string name="blue"> blue</string>
     <string name="fragment_example" translatable="false">Fragment Example</string>
     <string name="view_example" translatable="false">View Example</string>
 </resources>

@@ -25,9 +25,11 @@ import com.linkdev.sample.data.shared_preference.IPreferenceDataSource
 import com.linkdev.sample.databinding.FragmentViewPagerBinding
 import com.linkdev.sample.ui.MainActivity
 import com.linkdev.sample.ui.RTLViewPagerSampleApplication
+import com.linkdev.sample.ui.tabs.adapters.ItemFragmentPagerAdapter
+import com.linkdev.sample.ui.tabs.adapters.ViewPagerAdapter
 import com.linkdev.sample.ui.tabs.tabs_item.FragmentTabItem
 import com.linkdev.sample.utils.Constants
-import com.linkdev.sample.utils.Constants.Extras.Example_Type
+import com.linkdev.sample.utils.Constants.Extras.EXAMPLE_TYPE
 import javax.inject.Inject
 
 
@@ -43,7 +45,7 @@ class FragmentViewPager : Fragment() {
         @JvmStatic
         fun newInstance(exampleType: Int) = FragmentViewPager().apply {
             arguments = Bundle().apply {
-                putInt(Example_Type, exampleType)
+                putInt(EXAMPLE_TYPE, exampleType)
             }
         }
     }
@@ -68,12 +70,27 @@ class FragmentViewPager : Fragment() {
         initViews()
     }
 
-    fun initViews() {
-        binding?.viewPager?.adapter =
-            ItemPagerAdapter(childFragmentManager, getFragmentList(), getTabItemData())
+    private fun initViews() {
+        initPagerAdapter()
         binding?.tabLayout?.setupWithViewPager(binding?.viewPager)
     }
 
+    private fun initPagerAdapter() {
+        when (arguments?.getInt(EXAMPLE_TYPE, Constants.ExampleType.FRAGMENT_TYPE)) {
+            Constants.ExampleType.FRAGMENT_TYPE -> initFragmentPagerAdapter()
+            Constants.ExampleType.VIEW_TYPE -> initViewPagerAdapter()
+        }
+    }
+
+    private fun initFragmentPagerAdapter() {
+        binding?.viewPager?.adapter =
+            ItemFragmentPagerAdapter(childFragmentManager, getFragmentList(), getTabItemData())
+    }
+
+    private fun initViewPagerAdapter() {
+        binding?.viewPager?.adapter =
+            ViewPagerAdapter(context!!)
+    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

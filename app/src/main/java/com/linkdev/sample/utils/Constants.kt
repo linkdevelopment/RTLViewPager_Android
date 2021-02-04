@@ -36,7 +36,7 @@ object Constants {
 
     object Extras {
         const val TAB_ITEM = "TAB_ITEM"
-        const val Example_Type = "Example_Type"
+        const val EXAMPLE_TYPE = "Example_Type"
 
     }
 

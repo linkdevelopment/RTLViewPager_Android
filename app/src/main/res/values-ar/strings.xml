@@ -20,4 +20,7 @@ limitations under the License.
     <string name="tab1_description">الوصف الاولى</string>
     <string name="tab2_description"> الوصف الثانى</string>
     <string name="tab3_description">الوصف الثالت</string>
+    <string name="orange"> برتقالى</string>
+    <string name="red"> أحمر</string>
+    <string name="blue"> أزرق</string>
 </resources>

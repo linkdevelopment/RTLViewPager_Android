@@ -13,14 +13,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
  **/
-package com.linkdev.sample.ui.tabs
+package com.linkdev.sample.ui.tabs.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.linkdev.sample.data.TabItemData
 
-internal class ItemPagerAdapter(
+internal class ItemFragmentPagerAdapter(
     fragmentManager: FragmentManager,
     var fragments: ArrayList<Fragment>,
     var tabItems: ArrayList<TabItemData>
