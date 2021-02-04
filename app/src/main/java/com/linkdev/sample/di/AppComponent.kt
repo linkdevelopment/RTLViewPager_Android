@@ -18,6 +18,7 @@ package com.linkdev.sample.di
 
 import android.content.Context
 import androidx.viewbinding.ViewBinding
+import com.linkdev.sample.ui.RTLViewPagerSampleApplication
 import com.linkdev.sample.ui.base.BaseActivity
 import com.linkdev.sample.ui.tabs.ViewPagerComponent
 
@@ -41,5 +42,6 @@ interface AppComponent {
 
     fun inject(baseActivity: BaseActivity<@JvmSuppressWildcards ViewBinding>?)
     fun viewPagerComponent(): ViewPagerComponent.Factory
+    fun inject(rtlViewPagerSampleApplication: RTLViewPagerSampleApplication)
 
 }

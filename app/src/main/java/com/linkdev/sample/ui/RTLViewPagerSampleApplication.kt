@@ -17,17 +17,48 @@ limitations under the License.
 package com.linkdev.sample.ui
 
 import android.app.Application
+import android.content.res.Configuration
+import android.os.Build
+import android.os.LocaleList
+import com.linkdev.sample.data.shared_preference.IPreferenceDataSource
 import com.linkdev.sample.di.AppComponent
 import com.linkdev.sample.di.DaggerAppComponent
+import com.linkdev.sample.utils.Constants
+import java.util.*
+import javax.inject.Inject
 
 class RTLViewPagerSampleApplication : Application() {
 
     lateinit var appComponent: AppComponent
+
+    @Inject
+    lateinit var iPreferenceDataSource: IPreferenceDataSource
     override fun onCreate() {
         super.onCreate()
         appComponent = DaggerAppComponent.factory()
             .create(this)
+        appComponent.inject(this)
 
     }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        val configuration: Configuration = newConfig
+        val appLanguage = iPreferenceDataSource.getLanguage(Constants.Languages.DEFAULT_LANGUAGE)
+        if (appLanguage.isNotEmpty()) {
+            val newLocale = Locale(appLanguage)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                configuration.apply {
+                    val localeList = LocaleList(newLocale)
+                    LocaleList.setDefault(localeList)
+                    setLocale(newLocale)
+                    setLocales(localeList)
+                }
+            } else {
+                configuration.setLocale(newLocale)
+            }
+        }
+        super.onConfigurationChanged(configuration)
+    }
+
 
 }
