@@ -29,7 +29,9 @@ limitations under the License.
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:tabMaxWidth="0dp"
         app:tabMode="fixed"
+        app:tabGravity="fill"
         app:tabSelectedTextColor="@color/purple_500" />
 
     <com.linkdev.rtlviewpager.views.RtlViewPager
@@ -38,6 +40,7 @@ limitations under the License.
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+        app:tabGravity="fill" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
