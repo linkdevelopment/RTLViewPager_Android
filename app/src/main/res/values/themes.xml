@@ -33,5 +33,6 @@ limitations under the License.
     <style name="button_style" parent="Widget.AppCompat.Button">
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/teal_200</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 </resources>
