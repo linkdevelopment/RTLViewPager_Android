@@ -19,6 +19,7 @@ package com.linkdev.rtlviewpager.views;
 
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.os.Parcelable;
 import android.util.ArrayMap;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -30,6 +31,8 @@ import androidx.core.text.TextUtilsCompat;
 import androidx.core.view.ViewCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import com.linkdev.rtlviewpager.data.models.ViewPagerSavedState;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -46,12 +49,13 @@ public class RtlViewPager extends ViewPager {
     private Boolean disable = false;
     @Nullable
     private DataSetObserver dataSetObserver;
-
     private boolean suppressOnPageChangeListeners;
+
 
     public RtlViewPager(Context context) {
         super(context);
         reverseOnPageChangeListeners = new ArrayMap<>(1);
+
     }
 
     public RtlViewPager(Context context, AttributeSet attrs) {
@@ -97,6 +101,26 @@ public class RtlViewPager extends ViewPager {
         super.setCurrentItem(convert(item), smoothScroll);
     }
 
+
+    @Override
+    public Parcelable onSaveInstanceState() {
+        Parcelable superState = super.onSaveInstanceState();
+        ViewPagerSavedState savedState = new ViewPagerSavedState(superState);
+        return savedState;
+    }
+
+    @Override
+    public void onRestoreInstanceState(Parcelable state) {
+        if (!(state instanceof ViewPagerSavedState)) {
+            super.onRestoreInstanceState(state);
+            return;
+        }
+
+        ViewPagerSavedState savedState = (ViewPagerSavedState) state;
+        super.onRestoreInstanceState(savedState.getSuperState());
+
+    }
+
     @Override
     public void setCurrentItem(int item) {
         super.setCurrentItem(convert(item));
@@ -106,6 +130,7 @@ public class RtlViewPager extends ViewPager {
     public int getCurrentItem() {
         return convert(super.getCurrentItem());
     }
+    
 
     private int convert(int position) {
         if (position >= 0 && isRtl()) {
