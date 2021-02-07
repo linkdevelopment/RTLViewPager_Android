@@ -40,7 +40,7 @@ class FragmentViewPager : Fragment() {
     private var binding: FragmentViewPagerBinding? = null
 
     companion object {
-        const val Tag = "FragmentViewPager"
+        const val TAG = "FragmentViewPager"
 
         @JvmStatic
         fun newInstance(exampleType: Int) = FragmentViewPager().apply {

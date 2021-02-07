@@ -28,4 +28,6 @@ limitations under the License.
     <string name="blue"> blue</string>
     <string name="fragment_example" translatable="false">Fragment Example</string>
     <string name="view_example" translatable="false">View Example</string>
+    <string name="fragment_example_description" translatable="false">Display the RTL viewPager using fragment</string>
+    <string name="view_example_description" translatable="false">Display the RTL viewPager using view</string>
 </resources>

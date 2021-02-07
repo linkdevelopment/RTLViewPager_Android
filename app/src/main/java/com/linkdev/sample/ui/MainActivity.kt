@@ -22,6 +22,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.linkdev.sample.databinding.ActivityMainBinding
+import com.linkdev.sample.ui.select.FragmentSelection
+import com.linkdev.sample.ui.select.ISelectFragmentListener
 import com.linkdev.sample.ui.tabs.FragmentViewPager
 import com.linkdev.sample.utils.Constants
 import com.linkdev.sample.utils.Constants.ExampleType.FRAGMENT_TYPE
@@ -30,15 +32,13 @@ import com.linkdev.sample.utils.LocaleContextWrapper
 import javax.inject.Inject
 import javax.inject.Named
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ISelectFragmentListener {
 
     private var binding: ActivityMainBinding? = null
 
     @Inject
     @Named(Constants.NamedAnnotations.LANGUAGE)
     lateinit var mAppLanguage: String
-
-    private var saveState: Bundle? = null
 
     companion object {
         fun restartActivity(context: Context) {
@@ -52,11 +52,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        saveState = savedInstanceState
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(requireNotNull(binding?.root))
-        setListeners()
-     //  onButtonClicked(FRAGMENT_TYPE)
+        if (savedInstanceState == null)
+            supportFragmentManager.beginTransaction()
+                .replace(
+                    binding?.fragmentContainer?.id!!, FragmentSelection.newInstance(),
+                    FragmentSelection.TAG
+                )
+                .commit()
+        else {
+            loadFragmentByTag(FragmentSelection.TAG)
+        }
+
     }
 
 
@@ -70,33 +78,18 @@ class MainActivity : AppCompatActivity() {
         super.attachBaseContext(newBase)
     }
 
-    private fun setListeners() {
-        binding?.btnFragment?.setOnClickListener { onButtonClicked(FRAGMENT_TYPE) }
-        binding?.btnView?.setOnClickListener { onButtonClicked(VIEW_TYPE) }
 
-    }
-
-    private fun onButtonClicked(buttonType: Int) {
-        if (saveState == null)
-            replaceFragment(
+    override fun onSelectFragment(exampleType: Int) {
+        supportFragmentManager.beginTransaction()
+            .replace(
                 binding?.fragmentContainer?.id!!,
-                FragmentViewPager.newInstance(buttonType),
-                FragmentViewPager.Tag
-            ) else {
-            loadFragmentByTag(FragmentViewPager.Tag)
-        }
-    }
-
-    private fun replaceFragment(
-        containerId: Int, fragment: Fragment, tag: String,
-        shouldAddToBackStack: Boolean = false, backStackTag: String? = null
-    ) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        if (shouldAddToBackStack)
-            fragmentTransaction.addToBackStack(backStackTag)
-        fragmentTransaction.replace(containerId, fragment, tag)
+                FragmentViewPager.newInstance(exampleType),
+                FragmentViewPager.TAG
+            )
+            .addToBackStack(null)
             .commit()
     }
+
 
     private fun loadFragmentByTag(tag: String) {
         supportFragmentManager.findFragmentByTag(tag)
@@ -106,4 +99,6 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         binding = null
     }
+
+
 }
