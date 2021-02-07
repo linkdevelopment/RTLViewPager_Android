@@ -105,8 +105,7 @@ public class RtlViewPager extends ViewPager {
     @Override
     public Parcelable onSaveInstanceState() {
         Parcelable superState = super.onSaveInstanceState();
-        ViewPagerSavedState savedState = new ViewPagerSavedState(superState);
-        return savedState;
+        return new ViewPagerSavedState(superState);
     }
 
     @Override
@@ -130,7 +129,7 @@ public class RtlViewPager extends ViewPager {
     public int getCurrentItem() {
         return convert(super.getCurrentItem());
     }
-    
+
 
     private int convert(int position) {
         if (position >= 0 && isRtl()) {

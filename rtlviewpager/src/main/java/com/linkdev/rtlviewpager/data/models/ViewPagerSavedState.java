@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
-
 package com.linkdev.rtlviewpager.data.models;
 
 import android.os.Parcel;
@@ -21,7 +20,15 @@ import android.os.Parcelable;
 import android.view.View;
 
 public class ViewPagerSavedState extends View.BaseSavedState {
+    int stateToSave;
 
+    public int getStateToSave() {
+        return stateToSave;
+    }
+
+    public void setStateToSave(int stateToSave) {
+        this.stateToSave = stateToSave;
+    }
 
     public ViewPagerSavedState(Parcelable superState) {
         super(superState);
@@ -29,12 +36,13 @@ public class ViewPagerSavedState extends View.BaseSavedState {
 
     private ViewPagerSavedState(Parcel in) {
         super(in);
-
+        this.stateToSave = in.readInt();
     }
 
     @Override
     public void writeToParcel(Parcel out, int flags) {
         super.writeToParcel(out, flags);
+        out.writeInt(this.stateToSave);
     }
 
     //required field that makes Parcelables from a Parcel
