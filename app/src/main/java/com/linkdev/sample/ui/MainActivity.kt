@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity() {
     @Named(Constants.NamedAnnotations.LANGUAGE)
     lateinit var mAppLanguage: String
 
+    private var saveState: Bundle? = null
+
     companion object {
         fun restartActivity(context: Context) {
             val intent = Intent(context, MainActivity::class.java)
@@ -50,9 +52,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        saveState = savedInstanceState
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(requireNotNull(binding?.root))
         setListeners()
+     //  onButtonClicked(FRAGMENT_TYPE)
     }
 
 
@@ -73,11 +77,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onButtonClicked(buttonType: Int) {
-        replaceFragment(
-            binding?.fragmentContainer?.id!!,
-            FragmentViewPager.newInstance(buttonType),
-            FragmentViewPager.Tag
-        )
+        if (saveState == null)
+            replaceFragment(
+                binding?.fragmentContainer?.id!!,
+                FragmentViewPager.newInstance(buttonType),
+                FragmentViewPager.Tag
+            ) else {
+            loadFragmentByTag(FragmentViewPager.Tag)
+        }
     }
 
     private fun replaceFragment(
@@ -89,6 +96,10 @@ class MainActivity : AppCompatActivity() {
             fragmentTransaction.addToBackStack(backStackTag)
         fragmentTransaction.replace(containerId, fragment, tag)
             .commit()
+    }
+
+    private fun loadFragmentByTag(tag: String) {
+        supportFragmentManager.findFragmentByTag(tag)
     }
 
     override fun onDestroy() {

@@ -32,7 +32,7 @@ import androidx.core.view.ViewCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.linkdev.rtlviewpager.data.models.ViewPagerSavedState;
+import com.linkdev.rtlviewpager.data.models.ViewPagerState;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -101,24 +101,22 @@ public class RtlViewPager extends ViewPager {
         super.setCurrentItem(convert(item), smoothScroll);
     }
 
-
     @Override
     public Parcelable onSaveInstanceState() {
         Parcelable superState = super.onSaveInstanceState();
-        return new ViewPagerSavedState(superState);
+        return new ViewPagerState(superState, getLayoutDirection());
     }
 
     @Override
     public void onRestoreInstanceState(Parcelable state) {
-        if (!(state instanceof ViewPagerSavedState)) {
+        if (!(state instanceof ViewPagerState)) {
             super.onRestoreInstanceState(state);
             return;
         }
-
-        ViewPagerSavedState savedState = (ViewPagerSavedState) state;
-        super.onRestoreInstanceState(savedState.getSuperState());
-
+        ViewPagerState viewPagerState = (ViewPagerState) state;
+        super.onRestoreInstanceState(viewPagerState.mViewPagerSavedState);
     }
+
 
     @Override
     public void setCurrentItem(int item) {
