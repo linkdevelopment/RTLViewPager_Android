@@ -30,4 +30,5 @@ limitations under the License.
     <string name="view_example" translatable="false">View Example</string>
     <string name="fragment_example_description" translatable="false">Display the RTL viewPager using fragment</string>
     <string name="view_example_description" translatable="false">Display the RTL viewPager using view</string>
+    <string name="language_selected_error_message">This language is already selected</string>
 </resources>

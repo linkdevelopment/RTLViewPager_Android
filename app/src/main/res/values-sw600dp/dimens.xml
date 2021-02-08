@@ -15,4 +15,5 @@ limitations under the License.
 -->
 <resources>
     <dimen name="margin_small">12dp</dimen>
+    <dimen name="margin_large">48dp</dimen>
 </resources>

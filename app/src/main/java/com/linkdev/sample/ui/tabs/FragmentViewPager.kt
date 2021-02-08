@@ -18,6 +18,7 @@ package com.linkdev.sample.ui.tabs
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.linkdev.sample.R
 import com.linkdev.sample.data.TabItemData
@@ -111,8 +112,16 @@ class FragmentViewPager : Fragment() {
     }
 
     private fun saveLanguage(language: String) {
-        iPreferenceDataSource.setLanguage(language)
-        MainActivity.restartActivity(context!!)
+        if (language != iPreferenceDataSource.getLanguage(Constants.Languages.DEFAULT_LANGUAGE)) {
+            iPreferenceDataSource.setLanguage(language)
+            MainActivity.restartActivity(context!!)
+        } else {
+            Toast.makeText(
+                context,
+                getString(R.string.language_selected_error_message),
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
 
