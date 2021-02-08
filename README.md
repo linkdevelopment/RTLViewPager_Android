@@ -41,7 +41,9 @@ To import the RTLViewPager library to Android Studio, follow the following steps
         app:tabGravity="fill" />
 ```
 
-used of the rtlviewpager will handle the RTL swipe direction but take in your consideration that you need to override the onConfigurationChanged method
+use the rtlviewpager in your layout to handle the RTL swipe direction.<br />
+### Note
+take in your consideration that you need to override the onConfigurationChanged method
 in your application class to provide the language again because in case of the mobile rotate and the selected language is RTL the viewPager will take the mobile default language
 and ignore the RTL language so we need to provide the language in case of configuration changes.
 
