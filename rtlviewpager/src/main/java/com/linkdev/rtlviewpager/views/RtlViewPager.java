@@ -34,7 +34,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.linkdev.rtlviewpager.data.models.ViewPagerState;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.Locale;
 import java.util.Map;
@@ -237,14 +237,14 @@ public class RtlViewPager extends ViewPager {
         }
 
         @Override
-        public int getItemPosition(@NotNull Object object) {
+        public int getItemPosition(Object object) {
             final int itemPosition = super.getItemPosition(object);
             return itemPosition < 0 ? itemPosition : reverse(itemPosition);
         }
 
-        @NotNull
+
         @Override
-        public Object instantiateItem(@NotNull ViewGroup container, int position) {
+        public Object instantiateItem(ViewGroup container, int position) {
             return super.instantiateItem(container, reverse(position));
         }
 
@@ -254,7 +254,7 @@ public class RtlViewPager extends ViewPager {
         }
 
         @Override
-        public void setPrimaryItem(@NotNull ViewGroup container, int position, @NotNull Object object) {
+        public void setPrimaryItem(ViewGroup container, int position, Object object) {
             super.setPrimaryItem(container, lastCount - position - 1, object);
         }
 
