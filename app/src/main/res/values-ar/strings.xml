@@ -23,4 +23,5 @@ limitations under the License.
     <string name="orange"> برتقالى</string>
     <string name="red"> أحمر</string>
     <string name="blue"> أزرق</string>
+    <string name="language_selected_error_message">هذه اللغه مختاره بالفعل</string>
 </resources>
