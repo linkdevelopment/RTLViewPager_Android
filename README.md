@@ -12,17 +12,21 @@ and handle the RTL (right-to-left) layout support.
 ![](images/rtlviewpager_sample_3.gif)
 
 
-## Setup
+#Setup
 
-To import the RTLViewPager library to Android Studio, follow the following steps:
-
-1. Open your project in Android Studio
-2. Download the library (using Git, or a zip archive to unzip)
-3. Go to File > Import Module and import the library as a module
-4. Right-click your app in project view and select "Open Module Settings"
-5. Click the "Dependencies" tab and then the '+' button
-6. Select "Module Dependency"
-7. Select "rtlviewpager"
+Gradle:
+```
+implementation 'com.linkdev.rtlviewpager:rtlviewpager:1.0.0'
+```
+Maven:
+```
+<dependency>
+  <groupId>com.linkdev.rtlviewpager</groupId>
+  <artifactId>rtlviewpager</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+```
 
 
 ## How to use
@@ -43,9 +47,8 @@ To import the RTLViewPager library to Android Studio, follow the following steps
 
 use the rtlviewpager in your layout to handle the RTL swipe direction.<br />
 ### Note
-take in your consideration that you need to override the onConfigurationChanged method
-in your application class to provide the language again because in case of the mobile rotate and the selected language is RTL the viewPager will take the mobile default language
-and ignore the RTL language so we need to provide the language in case of configuration changes.
+Take in your consideration that in case of the configuration changes and the selected language is RTL you need to check if the RTLViePager language is set to the mobile default language not the (RTL)selected language.
+so you need to override the onConfigurationChanged method in your application class to provide the language again to resolve this issue otherwise no need for that.
 
 ### Kotlin
 ```kotlin
