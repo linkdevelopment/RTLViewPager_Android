@@ -1,0 +1,34 @@
+<!--
+Copyright (C) 2020 Link Development
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<resources>
+    <string name="app_name" translatable="false">RTl ViewPager</string>
+    <string name="english" translatable="false">English</string>
+    <string name="arabic" translatable="false">العربيه</string>
+    <string name="tab_one">One</string>
+    <string name="tab_two">Two</string>
+    <string name="tab_three">three</string>
+    <string name="tab1_description">Description one</string>
+    <string name="tab2_description">Description Two</string>
+    <string name="tab3_description">Description Three</string>
+    <string name="orange"> Orange</string>
+    <string name="red"> Red</string>
+    <string name="blue"> blue</string>
+    <string name="fragment_example" translatable="false">Fragment Example</string>
+    <string name="view_example" translatable="false">View Example</string>
+    <string name="fragment_example_description" translatable="false">Display the RTL viewPager using fragment</string>
+    <string name="view_example_description" translatable="false">Display the RTL viewPager using view</string>
+    <string name="language_selected_error_message">This language is already selected</string>
+</resources>
